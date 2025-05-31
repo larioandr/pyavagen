@@ -348,8 +348,8 @@ class CharAvatar(ColorListMixin, BaseAvatar):
         img_width, img_height = self.img.size
         font = ImageFont.truetype(font=self.font, size=self.font_size)
         text = self.get_text_for_draw()
-        text_width, text_height = font.getsize(text)
-        text_height_offset = font.getoffset(text)[1]
+        _, _, text_width, text_height = font.getbbox(text)
+        text_height_offset = font.getbbox(text)[1]
 
         x, y = (
             (img_width - text_width) / 2,
